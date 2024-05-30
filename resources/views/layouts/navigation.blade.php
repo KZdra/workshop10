@@ -51,7 +51,7 @@
                 <a href="{{ route('spareparts.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-wrench"></i>
                     <p>
-                        {{ __('Penjualan Spareparts') }}
+                        {{ __('Data Spareparts') }}
                     </p>
                 </a>
             </li>

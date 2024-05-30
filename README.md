@@ -32,6 +32,11 @@ FONNTE_API_TOKEN=your_api_token_here
 FONNTE_PHONE_NUMBER=your_phone_number
 ``` 
 
+Run on Terminal
+
+```bash
+php artisan send:reminder
+```
 
 
 

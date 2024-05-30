@@ -54,11 +54,11 @@
                                                     <a href="{{route('transactions.show', $transaction->id)}}" class="btn btn-info"><i class="fas fa-print"></i></a>
                                                     @if (Auth::user()->role == 'kasir' || Auth::user()->role == 'admin')
 
-                                                    <form action="{{ route('transactions.destroy', $transaction->id) }}" onsubmit="return confirm('Apakah Anda Yakin ?');" method="POST" style="display:inline-block;">
+                                                    {{-- <form action="{{ route('transactions.destroy', $transaction->id) }}" onsubmit="return confirm('Apakah Anda Yakin ?');" method="POST" style="display:inline-block;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                                    </form>
+                                                    </form> --}}
                                                     @endif
                                                 </td>
                                             </tr>

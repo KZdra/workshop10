@@ -32,7 +32,7 @@ class SendReminder extends Command
             $this->info("Customer ID: $customerId, Nama: {$customerTransactions->first()->nama}, No. Telp: {$customerTransactions->first()->no_telp}");
 
             if (Carbon::now()->gte($reminderDate)) {
-                $message = 'Waktunya untuk kembali ke bengkel untuk pengecekan rutin.';
+                $message = $customerTransactions->first()->nama . ' Waktunya untuk kembali ke bengkel untuk pengecekan rutin.';
                 $this->sendReminder($customerTransactions->first()->no_telp, $message);
             }
         }

@@ -15,7 +15,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
             data-accordion="false">
             <li class="nav-item">
-                <a href="{{ route('home') }}" class="nav-link">
+                <a href="{{ route('home') }}" class="nav-link {{ Request::routeIs('home') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         {{ __('Dashboard') }}
@@ -23,64 +23,50 @@
                 </a>
             </li>
 
-
-            @if ( Auth::user()->role == 'admin' ||  Auth::user()->role == 'kasir' )
-
-            <li class="nav-item">
-                <a href="{{ route('customers.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
-                    <p>
-                        {{ __('Pelanggan') }}
-                    </p>
-                </a>
-            </li>
+            @if (Auth::user()->role == 'admin' || Auth::user()->role == 'kasir')
+                <li class="nav-item">
+                    <a href="{{ route('customers.index') }}" class="nav-link {{ Request::routeIs('customers.index') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            {{ __('Pelanggan') }}
+                        </p>
+                    </a>
+                </li>
             @endif
 
-
-
-            {{-- <li class="nav-item">
-                <a href="{{ route('users.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
-                    <p>
-                        {{ __('Users') }}
-                    </p>
-                </a>
-            </li> --}}
             @if (Auth::user()->role == 'gudang' || Auth::user()->role == 'admin' || Auth::user()->role == 'kasir')
-            <li class="nav-item">
-                <a href="{{ route('spareparts.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-wrench"></i>
-                    <p>
-                        {{ __('Data Spareparts') }}
-                    </p>
-                </a>
-            </li>
-        @endif
-
-
-
-        @if ( Auth::user()->role == 'admin' )
-            <li class="nav-item">
-                <a href="{{ route('jasas.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-toolbox"></i>
-                    <p>
-                        {{ __(' Jasa') }}
-                    </p>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="{{ route('users.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-id-card"></i>
-                    <p>
-                        {{ __('Karyawan') }}
-                    </p>
-                </a>
-            </li>
-
+                <li class="nav-item">
+                    <a href="{{ route('spareparts.index') }}" class="nav-link {{ Request::routeIs('spareparts.index') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-wrench"></i>
+                        <p>
+                            {{ __('Data Spareparts') }}
+                        </p>
+                    </a>
+                </li>
             @endif
+
+            @if (Auth::user()->role == 'admin')
+                <li class="nav-item">
+                    <a href="{{ route('jasas.index') }}" class="nav-link {{ Request::routeIs('jasas.index') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-toolbox"></i>
+                        <p>
+                            {{ __(' Jasa') }}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('users.index') }}" class="nav-link {{ Request::routeIs('users.index') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-id-card"></i>
+                        <p>
+                            {{ __('Karyawan') }}
+                        </p>
+                    </a>
+                </li>
+            @endif
+
             <li class="nav-item">
-                <a href="{{ route('transactions.index') }}" class="nav-link">
+                <a href="{{ route('transactions.index') }}" class="nav-link {{ Request::routeIs('transactions.index') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-file-invoice-dollar"></i>
                     <p>
                         {{ __('Transaksi') }}
@@ -88,56 +74,19 @@
                 </a>
             </li>
 
-
-            @if ( Auth::user()->role == 'admin' ||  Auth::user()->role == 'kasir' )
-            <li class="nav-item">
-                <a href="{{ route('qr.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-qrcode"></i>
-                    <p>
-                        {{ __('Connect WhatsApp') }}
-                    </p>
-                </a>
-            </li>
+            @if (Auth::user()->role == 'admin' || Auth::user()->role == 'kasir')
+                <li class="nav-item">
+                    <a href="{{ route('qr.index') }}" class="nav-link {{ Request::routeIs('qr.index') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-qrcode"></i>
+                        <p>
+                            {{ __('Connect WhatsApp') }}
+                        </p>
+                    </a>
+                </li>
             @endif
 
-{{--
-            <li class="nav-item">
-                <a href="{{ route('users.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-file-invoice-dollar"></i>
-                    <p>
-                        {{ __('Report') }}
-                    </p>
-                </a>
-            </li> --}}
 
 
-
-            {{-- <li class="nav-item">
-                <a href="{{ route('about') }}" class="nav-link">
-                    <i class="nav-icon far fa-address-card"></i>
-                    <p>
-                        {{ __('About us') }}
-                    </p>
-                </a>
-            </li> --}}
-
-            {{-- <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-circle nav-icon"></i>
-                    <p>
-                        Two-level menu
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Child menu</p>
-                        </a>
-                    </li>
-                </ul>
-            </li> --}}
         </ul>
     </nav>
     <!-- /.sidebar-menu -->
